@@ -1,0 +1,172 @@
+/* ==========================================================================
+   COMPONENTS — reusable building blocks. Import after design-system.css.
+   Bootstrap is only used for grid/utility helpers (row, col, d-flex, gap-*);
+   all visual language comes from this file, not Bootstrap defaults.
+   ========================================================================== */
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: var(--lh-tight);
+  color: var(--color-text);
+  margin: 0;
+}
+
+p { margin: 0; color: var(--color-text-muted); }
+
+a { color: inherit; text-decoration: none; }
+
+.container-ds {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Eyebrow / route label ----
+   Every section opens with a fake HTTP route. It's not decoration: it tells
+   you which "resource" of Tayyab's profile you're about to read. */
+.route-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.02em;
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+  border: 1px solid rgba(242, 169, 59, 0.25);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-3);
+}
+.route-label .method { font-weight: 700; }
+
+/* ---- Section heading ---- */
+.section-head { margin-bottom: var(--space-6); max-width: 640px; }
+.section-head h2 { font-size: var(--fs-h2); font-weight: 600; }
+.section-head p { margin-top: var(--space-2); font-size: var(--fs-lg); }
+
+.section { padding-block: var(--space-8); border-top: 1px solid var(--color-border); }
+
+/* ---- Buttons ---- */
+.btn-ds {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), background 0.2s var(--ease), border-color 0.2s var(--ease);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-ds:hover { transform: translateY(-2px); }
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #191100;
+}
+.btn-primary:hover { box-shadow: var(--shadow-glow); background: var(--color-accent-strong); color: #191100; }
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--color-border-strong);
+  color: var(--color-text);
+}
+.btn-ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* ---- Badges / status ---- */
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-success-dim);
+  color: var(--color-success);
+  border: 1px solid rgba(61, 214, 140, 0.25);
+}
+.badge-status.is-muted {
+  background: rgba(139, 147, 167, 0.1);
+  color: var(--color-text-muted);
+  border-color: var(--color-border-strong);
+}
+.status-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 3px currentColor;
+  opacity: 0.9;
+}
+
+/* ---- Tag pill (tech stack) ---- */
+.tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Card shell ---- */
+.card-ds {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+/* ---- Nav ---- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background: rgba(11, 14, 20, 0.82);
+  border-bottom: 1px solid var(--color-border);
+}
+.site-nav .brand {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--fs-body);
+  color: var(--color-text);
+}
+.site-nav .brand .dollar { color: var(--color-accent); }
+.site-nav a.nav-link {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  padding: 0.5rem 0;
+  transition: color 0.2s var(--ease);
+}
+.site-nav a.nav-link:hover { color: var(--color-accent); }
+
+/* ---- Utility text ---- */
+.text-muted-ds { color: var(--color-text-muted); }
+.text-faint-ds { color: var(--color-text-faint); }
+.mono { font-family: var(--font-mono); }
